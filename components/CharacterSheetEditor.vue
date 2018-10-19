@@ -1,0 +1,148 @@
+<template>
+    <v-container>
+        <v-layout row wrap>
+            <v-flex xs12 md4 pa-2>
+                <v-layout row wrap>
+                    <v-flex xs12>
+                        <h2 class="section-title">Basic Info</h2>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-text-field label="Name" v-model="name"></v-text-field>
+                        <v-select :items="types" label="Type" v-model="selectedType"></v-select>
+                        <v-layout row wrap>
+                            <v-flex xs10 pr-2><v-select :items="classes" label="Class" v-model="selectedClass"></v-select></v-flex>
+                            <v-flex xs2> <v-text-field mask="##" label="Level" v-model="level"></v-text-field></v-flex>
+                        </v-layout>
+                        <v-text-field label="Custom Class Name" v-model="customClassName" v-if="selectedClass == 'Custom'"></v-text-field>
+                        <v-text-field label="Obsession" v-model="obsession"></v-text-field>
+                    </v-flex>
+                </v-layout>
+                <v-divider></v-divider>
+                <v-layout row wrap>
+                    <v-flex xs12>
+                        <h2 class="section-title">Stats</h2>
+                    </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                    <v-flex xs-12>
+                        <h3>Vitality</h3>
+                        <v-rating v-model="vitality" empty-icon="favorite_border" full-icon="favorite" length="4" color="red darken-1" background-color=""></v-rating>
+                    </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                    <v-flex xs-12>
+                        <h3>Sanity</h3>
+                        <v-rating v-model="sanity" empty-icon="sentiment_very_dissatisfied" full-icon="sentiment_very_satisfied" length="10" color="blue lighten-1" background-color=""></v-rating>
+                    </v-flex>
+                </v-layout>
+            </v-flex>
+            <v-flex xs12 md4 pa-2>
+                <v-layout row wrap class="skills">
+                    <v-flex xs10><h2 class="section-title">Skills</h2></v-flex>
+                    <v-flex xs2><v-btn absolute flat icon @click="addSkill"><v-icon>add</v-icon></v-btn></v-flex>
+                    <v-flex xs12 v-for="(skill, index) in skills" :key="index">
+                        <v-layout row wrap>
+                            <v-flex xs1><v-tooltip left nudge-top="10"><v-checkbox slot="activator" color="" v-model="skill.expertise"></v-checkbox><span>Expertise</span></v-tooltip></v-flex>
+                            <v-flex xs9><v-text-field v-model="skill.skill"></v-text-field></v-flex>
+                            <v-flex xs2><v-btn absolute flat icon @click="removeSkill(index)"><v-icon>remove</v-icon></v-btn></v-flex>
+                        </v-layout>
+                    </v-flex>
+                </v-layout>
+            </v-flex>
+            <v-flex xs12 md4 pa-2>
+
+            </v-flex>
+        </v-layout>
+    </v-container>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            id: undefined,
+            name: '',
+            types: [
+                'Gestalt',
+                'Science',
+                'Rider',
+                'Summoner'
+            ],
+            selectedType: '',
+            gestaltClasses: [
+                'Blood Knight',
+                'Elementalist',
+                'Predator',
+                'Siren',
+                'Custom'
+            ],
+            scienceClasses: [
+                'Alchemist',
+                'Graviton Ranger',
+                'Mentalist',
+                'Raptor',
+                'Custom'
+            ],
+            riderClasses: [
+                'Daybreaker',
+                'Dragoon',
+                'Reaper',
+                'Swarm Master',
+                'Custom'
+            ],
+            summonerClasses: [
+                'Changeling',
+                'Chosen',
+                'Reanimator',
+                'Tulpamancer',
+                'Custom'
+            ],
+            selectedClass: '',
+            customClassName: '',
+            level: undefined,
+            obsession: '',
+            vitality: 4,
+            sanity: 10,
+            skills: [
+                {skill: '', expertise: false}
+            ]
+        }
+    },
+    computed: {
+        classes: function() {
+            switch(this.selectedType) {
+                case 'Gestalt':
+                    this.selectedClass = ''
+                    return this.gestaltClasses
+                    break
+                case 'Science':
+                    this.selectedClass = ''
+                    return this.scienceClasses
+                    break
+                case 'Rider':
+                    this.selectedClass = ''
+                    return this.riderClasses
+                    break
+                case 'Summoner':
+                    this.selectedClass = ''
+                    return this.summonerClasses
+                    break
+            }
+        }
+    },
+    methods: {
+        addSkill: function() {
+            this.skills.push({skill: '', expertise: false})
+        },
+        removeSkill: function(index) {
+            this.skills.splice(index, 1)
+        }
+    }
+}
+</script>
+<style>
+    .section-title{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+</style>
+
