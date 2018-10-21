@@ -24,15 +24,50 @@
                     </v-flex>
                 </v-layout>
                 <v-layout row wrap>
-                    <v-flex xs-12>
+                    <v-flex xs2></v-flex>
+                    <v-flex xs2>
+                        <h3 class="text-xs-center">HP</h3>
+                        <v-text-field mask="###" v-model="hp" class="text-xs-center"></v-text-field>
+                    </v-flex>
+                    <v-flex xs1></v-flex>
+                    <v-flex xs2>
+                        <h3 class="text-xs-center">Speed</h3>
+                        <v-text-field mask="#" v-model="speed" class="text-xs-center"></v-text-field>
+                    </v-flex>
+                    <v-flex xs1></v-flex>
+                    <v-flex xs2>
+                        <h3 class="text-xs-center">Orgone</h3>
+                        <v-text-field mask="#" v-model="orgone" class="text-xs-center"></v-text-field>
+                    </v-flex>
+                    <v-flex xs2></v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                    <v-flex xs12>
                         <h3>Vitality</h3>
                         <v-rating v-model="vitality" empty-icon="favorite_border" full-icon="favorite" length="4" color="red darken-1" background-color=""></v-rating>
                     </v-flex>
                 </v-layout>
                 <v-layout row wrap>
-                    <v-flex xs-12>
+                    <v-flex xs12>
                         <h3>Sanity</h3>
                         <v-rating v-model="sanity" empty-icon="sentiment_very_dissatisfied" full-icon="sentiment_very_satisfied" length="10" color="blue lighten-1" background-color=""></v-rating>
+                    </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                    <v-flex xs12>
+                        <v-text-field mask="########" v-model="wealth" label="Wealth"></v-text-field> 
+                    </v-flex>
+                </v-layout>
+                <v-divider></v-divider>
+                <v-layout row wrap>
+                    <v-flex xs12>
+                        <h2 class="section-title">Goals</h2>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-textarea label="Short Term" rows="2" v-model="shortTermGoals" box auto-grow="true"> </v-textarea>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-textarea label="Long Term" v-model="longTermGoals" box auto-grow="true"> </v-textarea>
                     </v-flex>
                 </v-layout>
             </v-flex>
@@ -100,8 +135,14 @@ export default {
             customClassName: '',
             level: undefined,
             obsession: '',
+            hp: undefined,
+            speed: undefined,
+            orgone: undefined,
             vitality: 4,
             sanity: 10,
+            wealth: undefined,
+            shortTermGoals: undefined,
+            longTermGoals: undefined,
             skills: [
                 {skill: '', expertise: false}
             ]
