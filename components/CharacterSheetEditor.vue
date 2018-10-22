@@ -11,7 +11,7 @@
                         <v-select :items="types" label="Type" v-model="selectedType"></v-select>
                         <v-layout row wrap>
                             <v-flex xs10 pr-2><v-select :items="classes" label="Class" v-model="selectedClass"></v-select></v-flex>
-                            <v-flex xs2> <v-text-field mask="##" label="Level" v-model="level"></v-text-field></v-flex>
+                            <v-flex xs2> <v-text-field label="Level" type="number" v-model="level"></v-text-field></v-flex>
                         </v-layout>
                         <v-text-field label="Custom Class Name" v-model="customClassName" v-if="selectedClass == 'Custom'"></v-text-field>
                         <v-text-field label="Obsession" v-model="obsession"></v-text-field>
@@ -27,17 +27,17 @@
                     <v-flex xs2></v-flex>
                     <v-flex xs2>
                         <h3 class="text-xs-center">HP</h3>
-                        <v-text-field mask="###" v-model="hp" class="text-xs-center"></v-text-field>
+                        <v-text-field type="number" v-model="hp" class="text-xs-center"></v-text-field>
                     </v-flex>
                     <v-flex xs1></v-flex>
                     <v-flex xs2>
                         <h3 class="text-xs-center">Speed</h3>
-                        <v-text-field mask="#" v-model="speed" class="text-xs-center"></v-text-field>
+                        <v-text-field type="number" v-model="speed" class="text-xs-center"></v-text-field>
                     </v-flex>
                     <v-flex xs1></v-flex>
                     <v-flex xs2>
                         <h3 class="text-xs-center">Orgone</h3>
-                        <v-text-field mask="#" v-model="orgone" class="text-xs-center"></v-text-field>
+                        <v-text-field type="number" v-model="orgone" class="text-xs-center"></v-text-field>
                     </v-flex>
                     <v-flex xs2></v-flex>
                 </v-layout>
@@ -55,7 +55,7 @@
                 </v-layout>
                 <v-layout row wrap>
                     <v-flex xs12>
-                        <v-text-field mask="########" v-model="wealth" label="Wealth"></v-text-field> 
+                        <v-text-field type="number" v-model="wealth" label="Wealth"></v-text-field> 
                     </v-flex>
                 </v-layout>
                 <v-divider></v-divider>

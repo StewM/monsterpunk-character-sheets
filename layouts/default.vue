@@ -4,7 +4,7 @@
       <v-toolbar-title><nuxt-link to="/">Monsterpunk Character Sheets</nuxt-link></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat icon @click="toggleDark"><v-icon>wb_sunny</v-icon></v-btn>
+        <v-btn flat icon @click="toggleDark"><v-icon v-if="dark">wb_sunny</v-icon><v-icon v-else-if="!dark">brightness_3</v-icon></v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
