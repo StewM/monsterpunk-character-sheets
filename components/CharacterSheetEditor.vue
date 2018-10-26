@@ -73,19 +73,55 @@
             </v-flex>
             <v-flex xs12 md4 pa-2>
                 <v-layout row wrap class="skills">
-                    <v-flex xs10><h2 class="section-title">Skills</h2></v-flex>
-                    <v-flex xs2><v-btn absolute flat icon @click="addSkill"><v-icon>add</v-icon></v-btn></v-flex>
+                    <v-flex xs11><h2 class="section-title">Skills</h2></v-flex>
+                    <v-flex xs1><v-btn absolute flat icon @click="addSkill"><v-icon>add</v-icon></v-btn></v-flex>
                     <v-flex xs12 v-for="(skill, index) in skills" :key="index">
                         <v-layout row wrap>
                             <v-flex xs1><v-tooltip left nudge-top="10"><v-checkbox slot="activator" color="" v-model="skill.expertise"></v-checkbox><span>Expertise</span></v-tooltip></v-flex>
-                            <v-flex xs9><v-text-field v-model="skill.skill"></v-text-field></v-flex>
-                            <v-flex xs2><v-btn absolute flat icon @click="removeSkill(index)"><v-icon>remove</v-icon></v-btn></v-flex>
+                            <v-flex xs10><v-text-field v-model="skill.skill"></v-text-field></v-flex>
+                            <v-flex xs1><v-btn absolute flat icon @click="removeSkill(index)"><v-icon>remove</v-icon></v-btn></v-flex>
+                        </v-layout>
+                    </v-flex>
+                </v-layout>
+                <v-divider></v-divider>
+                <v-layout row wrap>
+                    <v-flex xs11><h2 class="section-title">Languages</h2></v-flex>
+                    <v-flex xs1><v-btn absolute flat icon @click="addLanguage"><v-icon>add</v-icon></v-btn></v-flex>
+                    <v-flex xs12 v-for="(language, index) in languages" :key="index">
+                        <v-layout row wrap>
+                            <v-flex xs11><v-text-field v-model="language.value"></v-text-field></v-flex>
+                            <v-flex xs1><v-btn absolute flat icon @click="removeLanguage(index)"><v-icon>remove</v-icon></v-btn></v-flex>
+                        </v-layout>
+                    </v-flex>
+                </v-layout>
+                <v-divider></v-divider>
+                <v-layout row wrap>
+                    <v-flex xs11><h2 class="section-title">Feats</h2></v-flex>
+                    <v-flex xs1><v-btn absolute flat icon @click="addFeat"><v-icon>add</v-icon></v-btn></v-flex>
+                    <v-flex xs12 v-for="(feat, index) in feats" :key="index">
+                        <v-layout row wrap>
+                            <v-flex xs4 pr-2><v-text-field label="Name" v-model="feat.name"></v-text-field></v-flex>
+                            <v-flex xs7><v-text-field label="Description" v-model="feat.description"></v-text-field></v-flex>
+                            <v-flex xs1><v-btn absolute flat icon @click="removeFeat(index)"><v-icon>remove</v-icon></v-btn></v-flex>
                         </v-layout>
                     </v-flex>
                 </v-layout>
             </v-flex>
             <v-flex xs12 md4 pa-2>
-
+                <v-layout row wrap>
+                    <v-flex xs11><h2 class="section-title">Tricks</h2></v-flex>
+                    <v-flex xs1><v-btn absolute flat icon @click="addTrick"><v-icon>add</v-icon></v-btn></v-flex>
+                    <v-flex xs12 v-for="(trick, index) in tricks" :key="index">
+                        <v-layout row wrap>
+                            <v-flex xs11><v-text-field label="Name" v-model="trick.name"></v-text-field></v-flex>
+                            <v-flex xs1 align-end><v-btn absolute flat icon @click="removeTrick(index)"><v-icon>remove</v-icon></v-btn></v-flex>
+                            <v-flex xs12><v-textarea label="Description" rows="2" v-model="trick.description" box auto-grow="true"> </v-textarea></v-flex>
+                            <v-flex xs6 pr-2><v-text-field label="Range" v-model="trick.range"></v-text-field></v-flex>
+                            <v-flex xs6><v-text-field label="Action" v-model="trick.action"></v-text-field></v-flex>
+                        </v-layout>
+                        <v-divider></v-divider>
+                    </v-flex>
+                </v-layout>
             </v-flex>
         </v-layout>
     </v-container>
@@ -145,6 +181,16 @@ export default {
             longTermGoals: undefined,
             skills: [
                 {skill: '', expertise: false}
+            ],
+            languages: [{value: ''}],
+            feats: [{name: '', description: ''}],
+            tricks: [
+                {
+                    name: '',
+                    range: '',
+                    description: '',
+                    action: ''
+                }
             ]
         }
     },
@@ -176,6 +222,29 @@ export default {
         },
         removeSkill: function(index) {
             this.skills.splice(index, 1)
+        },
+        addLanguage: function() {
+            this.languages.push({value: ''})
+        },
+        removeLanguage: function(index) {
+            this.languages.splice(index, 1)
+        },
+        addFeat: function() {
+            this.feats.push({name: '', description: ''})
+        },
+        removeFeat: function(index) {
+            this.feats.splice(index, 1)
+        },
+        addTrick: function() {
+            this.tricks.push({
+                    name: '',
+                    range: '',
+                    description: '',
+                    action: ''
+                })
+        },
+        removeTrick: function(index) {
+            this.tricks.splice(index, 1)
         }
     }
 }

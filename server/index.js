@@ -27,6 +27,13 @@ async function start() {
     await builder.build()
   }
 
+  // get api/character_sheet
+  // post api/character_sheet
+
+  app.get('/api', (req, res) => {
+    res.json({ message: "Hello World!" })
+  })
+
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
