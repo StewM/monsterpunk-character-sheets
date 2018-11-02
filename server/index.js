@@ -6,12 +6,17 @@ const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 const Sequelize = require('sequelize')
+const dburl = process.env.DATABASE_URL || false
 const pguser = process.env.DBUSER || 'test'
 const pgpass = process.env.DBPASS || 'test'
 const pghost = process.env.DBHOST || 'localhost'
 const pgdb = process.env.DBNAME || 'monsterpunk'
 const pgport = process.env.DBPORT || '5432'
-const sequelize = new Sequelize('postgres://'+pguser+':'+pgpass+'@'+pghost+':'+pgport+'/'+pgdb)
+if(dburl != false) {
+  const sequelize = new Sequelize(dburl)
+} else {
+  const sequelize = new Sequelize('postgres://'+pguser+':'+pgpass+'@'+pghost+':'+pgport+'/'+pgdb)
+}
 
 const env = process.env.NODE_ENV
 
