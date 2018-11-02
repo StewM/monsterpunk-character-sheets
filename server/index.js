@@ -12,11 +12,15 @@ const pgpass = process.env.DBPASS || 'test'
 const pghost = process.env.DBHOST || 'localhost'
 const pgdb = process.env.DBNAME || 'monsterpunk'
 const pgport = process.env.DBPORT || '5432'
+let url = ''
+
 if(dburl != false) {
-  const sequelize = new Sequelize(dburl)
+  url = dburl
 } else {
-  const sequelize = new Sequelize('postgres://'+pguser+':'+pgpass+'@'+pghost+':'+pgport+'/'+pgdb)
+  url = 'postgres://'+pguser+':'+pgpass+'@'+pghost+':'+pgport+'/'+pgdb
 }
+
+const sequelize = new Sequelize(url)
 
 const env = process.env.NODE_ENV
 
