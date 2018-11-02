@@ -22,8 +22,6 @@ if(dburl != false) {
 
 const sequelize = new Sequelize(url)
 
-const env = process.env.NODE_ENV
-
 const CharacterSheet = sequelize.define('character_sheet', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   name: {type: Sequelize.STRING},
