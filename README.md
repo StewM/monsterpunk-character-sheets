@@ -49,6 +49,38 @@ API_URL: https://yourappname.herokuapp.com //this is so the frontend can know wh
 
 Once that's done, just push up the app to heroku and it should all be ready to go. If you don't know how to do any of this, just look at the heroku docs, there's a lot of great info on how to use heroku.
 
+### Step By Step Instructions
+
+If you still have no idea what I'm talking about and just want to get this running for your group, here's the simplest step by step instructions I can come up with.
+
+1. Make a [Heroku Account](https://signup.heroku.com/)
+2. Install [Git](https://git-scm.com/downloads)
+3. Install [Heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
+4. Open the terminal (terminal on mac or linux, git bash on windows)
+5. Type `heroku login` and login using your account credentials
+6. Type `git clone https://github.com/StewM/monsterpunk-character-sheets.git`
+7. Type `cd monsterpunk-character-sheets`
+8. Type `heroku create`, if you want to name the app type `heroku create your-name-here` instead
+9. Save the URL it give you, it should look like "https://yourapp.herokuapp.com"
+10. Type `heroku addons:create heroku-postgresql:hobby-dev`
+11. Type `heroku config:set NPM_CONFIG_PRODUCTION=false`
+12. Type `heroku config:set HOST=0.0.0.0`
+13. Type `heroku config:set NODE_ENV=production`
+14. Type `heroku config:set API_URL=https://yourapp.herokuapp.com` replacing that url with the one you got in step 9
+15. Type `git push heroku master`
+
+And that's it! When that last command finishes, you should be able to use your app at the URL they gave you in step 9. The way this is set up, your group will be able to use the app and it won't cost anything. The first time you go to the app after no one has used it for awhile, the first load will take a little while. This is heroku bringing the server back up. They don't keep it running when it isn't being used which is why it's free.
+
+When I release updates and you want to get them, as long as you haven't deleted or moved the monsterpunk-character-sheets folder, just do the following:
+
+1. Open the terminal
+2. Type `cd monster-punk-character-sheets`
+3. Type `git pull origin master`
+4. Type `git push heroku master`
+
+If there are any additional instructions needed for that update, they will be included on the release notes [here](https://github.com/StewM/monsterpunk-character-sheets/releases).
+
+
 ## Other Notes
 
 If you use this, thanks! If you find any bugs or have any feature suggestions, please open an issue or feel free to send a pull request if you want to contribute.

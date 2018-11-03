@@ -544,5 +544,13 @@ export default {
         margin-bottom: 10px;
         margin-top: 10px;
     }
+    .theme--dark.primary--text {
+        color: #ffffff !important;
+        caret-color: #ffffff !important;
+    }
+    .theme--dark .v-tabs__slider {
+        background-color: #fff !important;
+        border-color: #fff !important;
+    }
 </style>
 

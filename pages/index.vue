@@ -3,7 +3,7 @@
     row
     justify-center
     align-center>
-    <v-flex xs6>
+    <v-flex xs12 md6>
       <v-card>
         <v-card-title class="headline">Character Sheets</v-card-title>
         <v-card-text>
